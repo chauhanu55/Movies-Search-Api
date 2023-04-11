@@ -3,6 +3,10 @@ const input = document.querySelector("input");
 
 form.onsubmit = (e) => {
   e.preventDefault();
+  if( document.querySelector("#results").innerHTML!=''){
+    document.querySelector("#results").innerHTML=''
+  }
+ 
   const movieName = input.value;
   if (movieName.length === 0) {
     alert("Enter Something");
@@ -50,6 +54,9 @@ function showmovie(result) {
       		const trailerKey = findtrailer(result.results)
       		const anchor = document.querySelector("a");
       		anchor = "https://youtube.com/embed/"+trailerKey
+      		anchor.target = "_blank";
+            anchor.innerHTML = "Play Trailer";
+            div_create.append(anchor)
       	}
       }) 
 
@@ -65,6 +72,8 @@ function showmovie(result) {
     document.querySelector("#results").append(create_h);
   }
 }
+
+
 
 
 
